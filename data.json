@@ -1,0 +1,10 @@
+{
+  "campaign": {
+    "goal": 10000,
+    "drawDate": "2026-12-30T20:00:00",
+    "ticketPrice": 10
+  },
+  "tickets": [],
+  "supporters": [],
+  "receipts": []
+}

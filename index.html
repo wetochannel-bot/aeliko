@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rifa Beneficente | Transplante de Córnea</title>
+    <meta
+      name="description"
+      content="Participe da rifa beneficente e ajude a arrecadar R$ 10.000 para uma cirurgia de transplante de córnea."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="hero" id="topo">
+      <div class="hero__overlay"></div>
+      <div class="container hero__content">
+        <p class="hero__tag">Campanha solidária • Transparência total</p>
+        <h1>Me ajude a recuperar minha visão</h1>
+        <p class="hero__subtitle">
+          Estou lutando para realizar um transplante de córnea e preciso da sua ajuda para alcançar
+          a meta de <strong>R$ 10.000</strong>. Cada número comprado é um passo para enxergar novamente.
+        </p>
+
+        <div class="hero__highlights">
+          <div class="highlight-card">
+            <span class="label">Meta</span>
+            <strong id="metaValor">R$ 10.000,00</strong>
+          </div>
+          <div class="highlight-card">
+            <span class="label">Arrecadado</span>
+            <strong id="arrecadadoValor">R$ 0,00</strong>
+          </div>
+          <div class="highlight-card">
+            <span class="label">Sorteio em</span>
+            <strong id="countdown">--:--:--</strong>
+          </div>
+        </div>
+
+        <div class="progress-wrap" aria-label="Barra de progresso da meta">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p class="progress-text" id="progressText">0% da meta concluída</p>
+
+        <a href="#rifa" class="btn btn-primary">Quero Participar da Rifa</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="section story" id="historia">
+        <div class="container grid-2">
+          <div>
+            <h2>Uma história real, um sonho urgente</h2>
+            <p>
+              Nos últimos meses, minha visão piorou rapidamente. Atividades simples como ler, trabalhar
+              e caminhar com segurança ficaram cada vez mais difíceis. O transplante de córnea é o único
+              caminho para recuperar minha qualidade de vida.
+            </p>
+            <p>
+              O valor total da cirurgia, exames e medicações é de <strong>R$ 10.000</strong>. Para arrecadar
+              de forma justa e transparente, criei esta rifa beneficente. Toda contribuição será
+              direcionada exclusivamente para o tratamento.
+            </p>
+            <p>
+              Sua participação não é apenas um número: é esperança, dignidade e uma nova chance de voltar a enxergar o mundo.
+            </p>
+          </div>
+          <aside class="card urgency-card">
+            <h3>Transparência da campanha</h3>
+            <ul>
+              <li><strong>Meta total:</strong> R$ 10.000,00</li>
+              <li><strong>Destino:</strong> cirurgia + exames + pós-operatório</li>
+              <li><strong>Sorteio:</strong> ao vivo no Instagram oficial</li>
+              <li><strong>Atualização:</strong> em tempo real nesta página</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section raffle" id="rifa">
+        <div class="container">
+          <h2>Como funciona a rifa</h2>
+          <p class="section-subtitle">
+            Escolha seus números, envie o comprovante e aumente suas chances. Quanto mais números, maiores as possibilidades de ganhar.
+          </p>
+
+          <div class="card settings-card">
+            <div>
+              <label for="ticketPrice">Valor por número</label>
+              <select id="ticketPrice">
+                <option value="10">R$ 10,00</option>
+                <option value="20">R$ 20,00</option>
+              </select>
+            </div>
+            <div>
+              <span class="muted">Números vendidos</span>
+              <strong id="ticketsSold">0</strong>
+            </div>
+            <div>
+              <span class="muted">Números confirmados</span>
+              <strong id="ticketsConfirmed">0</strong>
+            </div>
+          </div>
+
+          <div class="raffle-layout">
+            <div>
+              <h3>Números disponíveis</h3>
+              <p class="muted">Clique para reservar. Verdes estão confirmados.</p>
+              <div class="numbers-grid" id="numbersGrid" aria-live="polite"></div>
+            </div>
+
+            <div class="card payment-card">
+              <h3>Pagamento via PIX (simulado)</h3>
+              <p>Escaneie o QR Code fictício e envie seu comprovante para confirmar o(s) número(s).</p>
+
+              <div class="pix-box">
+                <img
+                  src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=PIX%20BENEFICENTE%20TRANSPLANTE%20CORNEA"
+                  alt="QR Code PIX simulado"
+                />
+                <code id="pixKey">chave-pix-simulada@campanha.com</code>
+              </div>
+
+              <form id="paymentForm" class="payment-form">
+                <label for="supporterName">Seu nome</label>
+                <input id="supporterName" type="text" required placeholder="Ex: Ana Souza" />
+
+                <label for="supporterAmount">Valor enviado (R$)</label>
+                <input id="supporterAmount" type="number" min="1" step="0.01" required placeholder="Ex: 20" />
+
+                <label for="receiptUpload">Enviar comprovante</label>
+                <input id="receiptUpload" type="file" accept="image/*" required />
+
+                <button type="submit" class="btn btn-primary btn-full">Enviar comprovante e confirmar</button>
+              </form>
+              <p class="feedback" id="paymentFeedback"></p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section prize" id="premiacao">
+        <div class="container grid-2">
+          <div class="card">
+            <h2>Premiação</h2>
+            <p>
+              O vencedor receberá um <strong>PIX de R$ 1.000,00</strong> como forma de agradecimento pelo apoio.
+            </p>
+            <p><strong>Data do sorteio:</strong> 30/12/2026 às 20h</p>
+            <p><strong>Transmissão:</strong> ao vivo pelo Instagram <a href="#">@rifa.pela.visao</a></p>
+          </div>
+
+          <div class="card">
+            <h2>Ranking dos maiores apoiadores</h2>
+            <ol id="supportersRanking" class="ranking-list"></ol>
+          </div>
+        </div>
+      </section>
+
+      <section class="section transparency" id="transparencia">
+        <div class="container">
+          <h2>Transparência em tempo real</h2>
+          <div class="transparency-grid">
+            <article class="card stat-card">
+              <span>Meta total</span>
+              <strong>R$ 10.000,00</strong>
+            </article>
+            <article class="card stat-card">
+              <span>Valor arrecadado</span>
+              <strong id="liveAmount">R$ 0,00</strong>
+            </article>
+            <article class="card stat-card">
+              <span>Números vendidos</span>
+              <strong id="liveTickets">0</strong>
+            </article>
+          </div>
+
+          <div class="card receipts-card">
+            <h3>Comprovantes enviados</h3>
+            <p class="muted">Todos os comprovantes ficam listados abaixo para reforçar a confiança.</p>
+            <div id="receiptsList" class="receipts-list"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section admin" id="admin">
+        <div class="container">
+          <h2>Área administrativa (simulada)</h2>
+          <p class="section-subtitle">Acesso protegido por senha para ajustes e visualização de dados.</p>
+
+          <div class="card admin-card">
+            <div class="admin-login" id="adminLogin">
+              <label for="adminPassword">Senha de administrador</label>
+              <input id="adminPassword" type="password" placeholder="Digite a senha" />
+              <button id="adminUnlock" class="btn btn-outline">Entrar</button>
+              <p class="muted">Senha padrão para demonstração: <strong>admin123</strong></p>
+              <p class="feedback" id="adminFeedback"></p>
+            </div>
+
+            <div class="admin-panel hidden" id="adminPanel">
+              <h3>Painel rápido</h3>
+              <button id="resetReservations" class="btn btn-outline">Limpar reservas não confirmadas</button>
+              <button id="exportData" class="btn btn-outline">Exportar dados JSON</button>
+              <pre id="adminDataPreview"></pre>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-content">
+        <p><strong>Contato:</strong> (11) 99999-9999 • ajuda@campanhavisao.com</p>
+        <p><strong>Instagram:</strong> @rifa.pela.visao</p>
+        <p>Obrigado por fazer parte dessa corrente de solidariedade 💛</p>
+      </div>
+    </footer>
+
+    <script src="script.js" type="module"></script>
+  </body>
+</html>
